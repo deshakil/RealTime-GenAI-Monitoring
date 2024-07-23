@@ -7,7 +7,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'WebUploads')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Create the upload folder if it doesn't exist
+
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
@@ -27,7 +27,7 @@ def upload_file():
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
         
-        # Process the file
+       
         text = extract_text_from_pdf(file_path)
         preprocessed_text = preprocess_text(text)
         rules = extract_rules(preprocessed_text)
